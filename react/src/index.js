@@ -19,10 +19,16 @@ class App extends Comment{
     constructor(props){
         super(props);
 
-        this.state={ videos: [] }; //빈 배열에서 채줘져서 순간 0에서 시작하는게 보임 ----서퍼보드 아이템
+        this.state={
+             videos: [],
+             selectedVideo: null
+             }; //빈 배열에서 채줘져서 순간 0에서 시작하는게 보임 ----서퍼보드 아이템
 
         YTSearch({key: API_KEY, term: 'surfboards'},(videos) => {
-            this.setState({ videos }); 
+            this.setState({ 
+                videos: videos,
+                selectedVideo: videos[0]
+            }); 
               
         });
     }
@@ -34,8 +40,10 @@ class App extends Comment{
     return (
         <div>
             <SearchBar />
-            <VideoDetail video={this.state.videos[0]}/>
-            <VideoList videos={this.state.videos} /> 
+            <VideoDetail video={this.state.selectedVideo}/>
+            <VideoList 
+             onVideoSelect ={selectedVideo => this.setState({selectedVideo})}
+            videos={this.state.videos} /> 
         </div>
        );
     }
