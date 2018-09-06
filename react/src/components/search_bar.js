@@ -10,8 +10,8 @@ class SearchBar extends Component {
     }
     
     render(){
-        return ( 
-        <div>
+        return ( //컴포넌트 이름과 동일하게
+        <div className="search-bar">
          <input 
          value={this.state.term}
          onChange={event => this.setState({ term: event.target.value })} />
