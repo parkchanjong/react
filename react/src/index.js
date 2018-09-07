@@ -24,14 +24,21 @@ class App extends Comment{
              selectedVideo: null
              }; //빈 배열에서 채줘져서 순간 0에서 시작하는게 보임 ----서퍼보드 아이템
 
-        YTSearch({key: API_KEY, term: 'surfboards'},(videos) => {
+       this.videoSearch('surfboards');
+    }
+
+
+    videoSearch(term) {
+        YTSearch({key: API_KEY, term: term},(videos) => {
             this.setState({ 
                 videos: videos,
                 selectedVideo: videos[0]
-            }); 
+            }); //검색바 컴포넌트로 전달    검색바에서 검색어 바뀌면 onSearchTermChange 호출
               
         });
+
     }
+
 
 //비디오 불러오라는 요청을 하는 동안 랜더링  -- 정의되지 않은 상태에서 랜더링됨
     render() {
@@ -39,7 +46,7 @@ class App extends Comment{
 
     return (
         <div>
-            <SearchBar />
+            <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
             <VideoDetail video={this.state.selectedVideo}/>
             <VideoList 
              onVideoSelect ={selectedVideo => this.setState({selectedVideo})}

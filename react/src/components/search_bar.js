@@ -14,11 +14,16 @@ class SearchBar extends Component {
         <div className="search-bar">
          <input 
          value={this.state.term}
-         onChange={event => this.setState({ term: event.target.value })} />
+         onChange={event => this.onInputChange(event.target.value)} />
         
         </div>
-        );
+        );//검색어가 바뀌고 인풋 컨텐츠가 바뀌면 새로 호출
 }
+
+    onInputChange(term) {
+        this.setState({term});
+        this.props.onSearchTermChange(term);//콜백
+    }
 }
 
 export default SearchBar;
