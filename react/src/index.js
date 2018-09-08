@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 //리액트를 모듈에서 가져오기
 import React,{Component} from 'react';//상속위해 컴포넌트 불러오기
 import ReactDOM from 'react-dom';
@@ -43,16 +45,18 @@ class App extends Comment{
 //비디오 불러오라는 요청을 하는 동안 랜더링  -- 정의되지 않은 상태에서 랜더링됨
     render() {
         //this.props 전달받음
+        const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 300);
+                            //debounce(반환하는 새함수는 0.3초 마다 호출)를 통해 전달
 
-    return (
-        <div>
-            <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
-            <VideoDetail video={this.state.selectedVideo}/>
-            <VideoList 
-             onVideoSelect ={selectedVideo => this.setState({selectedVideo})}
-            videos={this.state.videos} /> 
-        </div>
-       );
+        return (
+            <div>
+                <SearchBar onSearchTermChange={videoSearch} />
+                <VideoDetail video={this.state.selectedVideo}/>
+                <VideoList 
+                 onVideoSelect ={selectedVideo => this.setState({selectedVideo})}
+                videos={this.state.videos} /> 
+            </div>
+            );
     }
 }
 
@@ -96,9 +100,12 @@ ReactDOM.render(<App />, document.querySelector('.container'));
 
 //각 파일당 하나의 컴포넌트를 만들어야 한다-- 국룰
 
-
-
-
-
-
 //--save 명령어-- 패키지.제이슨 파일에 자동으로 저장해달라
+
+
+
+
+
+
+// 클래스기반(스테이트 개념사용), 함수형 기반 차이(단순함 여러개의 프로퍼티(변수)와 정적 jsx반환, 가볍고 빠름)
+//스테이트-(construcor안에서 세팅)

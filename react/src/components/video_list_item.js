@@ -1,5 +1,5 @@
 import React from 'react';
-
+//함수형 기반
 const VideoListItem = ({video, onVideoSelect}) => {
     //const video = props.video;//props에 비디오 할당  ==const VideoListItem = ({video}) => { 과 동일 =비디오를 가져와 새로운 video를 생성
     const imageURL = video.snippet.thumbnails.default.url;//비디오 가져와 이미지url 선언-- 유트브로 부터 반환되는값(이미지줌)-썸네일-스크립트변수

@@ -3,7 +3,7 @@ import React from 'react';
 //const videos = props.videos;  props인 비디오가 비디오 리스트로 전달- 랜더링 될떄 마다 전달
 
 import VideoListItem from './video_list_item';
-
+//함수형 기반
 const VideoList = (props) => {  
     const videoItems = props.video.map((video) => {//넘겨받은 props를 video_list_item에 반환
         return (
