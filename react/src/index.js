@@ -11,7 +11,7 @@ import VideoList from './components/video_list';
 
 import VideoDetail from './components/video_detail';
 
-const API_KEY ='AIzaSyCkeBl5uuBD9p8hXDARaQZrdsgQ-munAxk'
+const API_KEY =''
 //패키지 동작방식- 1 요소-검색어 오브젝트,api키
 
 //스테이트를 기록해 비디오 리스트 추적--스테이트를 사용하려면 클래스 기반 컴포넌트 필요
