@@ -2,6 +2,8 @@
 import React, { Component } from 'react';  //컨테이너 -리액트 컴포넌트 , 리덕트에 관리되는 스테이트에 직접연결해줌  -
 
 import { connect } from 'react-redux';
+import { selectBook} from '../actions/index';
+import{ bindActionCreators} from 'redux';
 
 class BookList extends Comment{//컴포넌트로 상속
     renderList() {//앱스테이트와 연결-this.props.books  -리액트뷰와 리덕트 스테이트를 합쳐줌
@@ -29,8 +31,13 @@ function mapStateToProps(state){
 
 }//어플 스테이트 요소(책리스트, 책))를 가져야함
 
+function mapDispatchToProps(dispatch){//selectBook이 호출될때 마다 리듀서로 전달
+    return bindActionCreators({ selectBook: selectBook}, dispatch)
+}
 
-export default connect(mapStateToProps)(BookList);
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(BookList);
 
 //북리스트가 실제로 리덕스로부터 스테이트를 가져와 컴포넌트로 연결
 
