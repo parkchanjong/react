@@ -54,7 +54,7 @@ class App extends Comment{
                 <VideoDetail video={this.state.selectedVideo}/>
                 <VideoList 
                  onVideoSelect ={selectedVideo => this.setState({selectedVideo})}
-                videos={this.state.videos} /> 
+                foo={this.state.videos} /> 
             </div>
             );
     }

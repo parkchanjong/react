@@ -18,7 +18,7 @@ class SearchBar extends Component {
         
         </div>
         );//검색어가 바뀌고 인풋 컨텐츠가 바뀌면 새로 호출
-}
+}// onChange 발생하면 호출
 
     onInputChange(term) {
         this.setState({term});

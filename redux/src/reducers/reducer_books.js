@@ -3,10 +3,10 @@
 
 export default function() {
     return[
-        {title: '1번책' },
-        {title: '2번책' },
-        {title: '3' },
-        {title: '4' }
+        {title: '1번책', page : 100 },
+        {title: '2번책', page : 109 },
+        {title: '3', page : 1070 },
+        {title: '4', page : 1 }
     ]
 }
-//1.리듀서 생성, 2.앱과 연결
+//1.리듀서 생성, 2.앱과 연결 
