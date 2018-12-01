@@ -10,7 +10,9 @@ class WeatherList extends Component {
     //const temps = _map(cityData.list.map(weather => weather.main.temp), (temp) => temp -273);   //단위를 섭시나 뭐로 바꿀 떄  temps 안에서 바꾸자
     const pressures = cityData.list.map(weather => weather.main.pressure);
     const humidities = cityData.list.map(weather => weather.main.humidity);
-    console.log("list", cityData);
+    console.log("list", cityData.list[0]);
+    console.log("list", cityData.list);
+    console.log("listsdfg");
     //console.log("state", this.state);
     const { lon, lat } = cityData.city.coord; //es6로 두개합침
     // <td><GoogleMap lon={lon} lat={lat} /></td>
@@ -31,6 +33,7 @@ class WeatherList extends Component {
   }
 
   render() {
+    console.log("weatherrender", this.props.weather);
     return (
       <table className="table table-hover">
         <thead>
