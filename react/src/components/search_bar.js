@@ -1,33 +1,32 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 //리액트가 찾게 해줌   {}의 의미-const Component = React.Component;
 
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
 
-class SearchBar extends Component { 
-    constructor(props){
-        super(props);
+    this.state = { term: "" };
+  }
 
-        this.state = {term:''};
-    }
-    
-    render(){
-        return ( //컴포넌트 이름과 동일하게
-        <div className="search-bar">
-         <input 
-         value={this.state.term}
-         onChange={event => this.onInputChange(event.target.value)} />
-        
-        </div>
-        );//검색어가 바뀌고 인풋 컨텐츠가 바뀌면 새로 호출
-}// onChange 발생하면 호출
+  render() {
+    return (
+      //컴포넌트 이름과 동일하게
+      <div className="search-bar">
+        <input
+          value={this.state.term}
+          onChange={event => this.onInputChange(event.target.value)}
+        />
+      </div>
+    ); //검색어가 바뀌고 인풋 컨텐츠가 바뀌면 새로 호출
+  } // onChange 발생하면 호출
 
-    onInputChange(term) {
-        this.setState({term});
-        this.props.onSearchTermChange(term);//콜백
-    }
+  onInputChange(term) {
+    this.setState({ term });
+    this.props.onSearchTermChange(term); //콜백
+  }
 }
 
 export default SearchBar;
-
 
 //검색바 클래스 생성후 React.Component로 부터 기능 물려받는것
 
@@ -44,23 +43,13 @@ export default SearchBar;
 //onInputChange(event){ //인풋의 변화를 감지
 //   console.log(event.target.velue);//인풋 안의 값 반환
 
-
-
-
-
-
 //const SearchBar = () => {  클래스로 만들어서 기능 더 많이 만들기(다른컴포넌트와 소통)
 //    return <input />
 //};                        인풋 컴포넌트 정의 --jsx형태로 반환
 
-
 //앱안에서 어디서든 함수호출할수 있음
 
-
 //앱- 검색바 컴포넌트
-
-
-
 
 //앱 시작하면 - 검색바 랜더링- 검색바에 인스턴스 생성 - this.state문자열 초기화 - 컴포넌트 term값 가져와 인풋값 랜더링(초기값은 빈문자열)
 //값입력되면 스테이트 업데이트됨- term=변화된 텍스트(인풋값은 변화 되지 않음)   --스테이트로 값을 받음

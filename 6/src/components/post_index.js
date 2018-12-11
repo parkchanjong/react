@@ -9,6 +9,18 @@ class PostsIndex extends Comment {
     //console.log("포스트 액션 생성자 호출타이밍");
     this.props.fetchPosts();
   }
+
+  renderPosts() {
+    return this.props.posts.map(post => {
+      return (
+        <li className="list-group-item" key={post.id}>
+          <span className="pull-xs-right">{post.categories}</span>
+          <strong>{post.title}</strong>
+        </li>
+      );
+    });
+  }
+
   render() {
     return (
       <div>
@@ -17,17 +29,22 @@ class PostsIndex extends Comment {
             add a post
           </Link>
         </div>
-        list of blog posts
+        <h3>Posts</h3>
+        <ul className="list-group">{this.renderPosts()}</ul>
       </div>
     );
   }
 }
 
+function mapDispatchToProps(state) {
+  return { post: state.posts.all };
+}
+
+export default connect(
+  mapDispatchToProps,
+  { fetchPosts } //=fetchPosts:fetchPosts
+)(PostsIndex);
+
 /*function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchPosts }, dispatch);
 }*/
-
-export default connect(
-  null,
-  { fetchPosts } //=fetchPosts:fetchPosts
-)(PostsIndex);

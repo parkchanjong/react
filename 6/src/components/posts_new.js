@@ -8,6 +8,14 @@ class PostsNew extends Component {
     router: propsTypes.object
   };
 
+  onSubmit(props) {
+    this.props.createPost(props).then(() => {
+      //블로그 포스트가 생성되고 유저가 인덱스로 네비게이팅하고
+      //this.context.push 호출해서 새로운 경로로 네비게이팅한다
+      this.context.router.push("/");
+    });
+  }
+
   render() {
     const {
       fields: { title, categories, content }, //const title = this.props.fields.title
@@ -16,13 +24,13 @@ class PostsNew extends Component {
 
     return (
       //오브젝트 디스트럭팅
-      //폼안지키면 블로킹됨
-      <form onSubmit={handleSubmit(this.props.createPost)}>
+      //폼안지키면 블로킹됨   구조 분해
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Create A New Post</h3>
         <div
           className={`form-group ${
             title.touched && title.invalid ? "has - danger" : ""
-          }`}
+          }`} //{...title} 로 매핑해서 가능함
         >
           <label>Tiele</label>
           <input type="text" className="form-control" {...title} />
@@ -84,7 +92,7 @@ function validate(values) {
 export default reduxForm(
   {
     form: "PostsNewForm",
-    fields: ["title", "categories", "content"],
+    fields: ["title", "categories", "content"], // props 로 전달함
     validate
   },
   null,

@@ -17,7 +17,7 @@ class BookList extends Component {
           className="list-group-item"
         >
           {book.title}
-        </li> 
+        </li>
       );
     }); //책리스트를 this.props로 연결   -배열은 map사용     키값은 유니크한 제목으로 사용(리스트중 중복되어선 안됨)
   }
