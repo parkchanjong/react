@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router";
 
 import { fetchPosts } from "../actions/index";
-import { runInThisContext } from "vm";
 
 class PostsIndex extends Component {
   componentWillMount() {
